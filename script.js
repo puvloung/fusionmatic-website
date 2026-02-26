@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       message: document.getElementById('message').value
     };
 
-    fetch('fusionmatic-backend-production.up.railway.app', {
+   fetch('https://fusionmatic-backend-production.up.railway.app/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
