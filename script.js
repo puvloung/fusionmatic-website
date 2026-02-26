@@ -157,33 +157,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ——— Contact form: validate then redirect to confirmation page ———
-  var form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var nameField = form.querySelector('#name');
-      var email = form.querySelector('#email');
-      var valid = true;
-      [nameField, email].forEach(function (field) {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#c00';
-          valid = false;
-        } else {
-          field.style.borderColor = '';
-        }
-      });
-      if (valid) {
-        var btn = form.querySelector('button[type="submit"]');
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-        var nameParam = nameField.value.trim();
-        var query = nameParam ? '?name=' + encodeURIComponent(nameParam) : '';
-        window.location.href = 'confirmation.html' + query;
-      }
-    });
-  }
-
   // ——— Footer year ———
   var yearEl = document.getElementById('year');
   if (yearEl) {
