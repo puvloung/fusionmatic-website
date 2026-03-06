@@ -1,19 +1,22 @@
 /* ============================================
-   ELEVATE AGENCY — Design tokens & base
+   FUSIONMATIC — Roofing (masculine theme)
    ============================================ */
 :root {
-  --primary: #7fb396;
-  --primary-dark: #456b5f;
-  --white: #FFFFFF;
-  --gray-light: #F4F4F4;
-  --gray-mid: #E0E0E0;
-  --gray-dark: #555555;
-  --black: #1A1A1A;
+  --primary: #c45c26;
+  --primary-dark: #9b4a1e;
+  --primary-glow: rgba(196, 92, 38, 0.35);
+  --white: #ffffff;
+  --off-white: #f5f4f2;
+  --gray-light: #e8e6e3;
+  --gray-mid: #b8b5b0;
+  --gray-dark: #4a4845;
+  --charcoal: #2a2927;
+  --black: #1a1918;
   --transition: 0.3s ease;
   --radius: 8px;
   --radius-lg: 12px;
-  --shadow: 0 4px 20px rgba(26, 26, 26, 0.08);
-  --shadow-hover: 0 8px 30px rgba(26, 26, 26, 0.12);
+  --shadow: 0 4px 20px rgba(26, 25, 24, 0.1);
+  --shadow-hover: 0 8px 30px rgba(26, 25, 24, 0.15);
   --header-height: 72px;
   --header-height-scrolled: 60px;
 }
@@ -35,7 +38,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--black);
-  background: var(--white);
+  background: var(--off-white);
   overflow-x: hidden;
 }
 
@@ -106,7 +109,7 @@ ul {
 
 .header.scrolled {
   height: var(--header-height-scrolled);
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(245, 244, 242, 0.98);
   box-shadow: var(--shadow);
 }
 
@@ -129,6 +132,23 @@ ul {
 
 .logo:hover {
   color: var(--primary) !important;
+}
+
+/* Light nav on dark hero when not scrolled */
+.header:not(.scrolled) .nav-list a:not(.nav-cta) {
+  color: rgba(255, 255, 255, 0.9);
+}
+.header:not(.scrolled) .nav-list a:not(.nav-cta):hover {
+  color: var(--primary);
+}
+.header:not(.scrolled) .logo {
+  color: var(--white) !important;
+}
+.header:not(.scrolled) .logo:hover {
+  color: var(--primary) !important;
+}
+.header:not(.scrolled) .hamburger span {
+  background: var(--white);
 }
 
 .nav-list {
@@ -222,16 +242,16 @@ ul {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: calc(var(--header-height) + 4rem) 1.5rem 4rem;
+  padding: calc(var(--header-height) + 3rem) 1.5rem 2rem;
   overflow: hidden;
 }
 
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--gray-light) 0%, var(--white) 40%, var(--gray-mid) 100%);
+  background: linear-gradient(165deg, var(--charcoal) 0%, var(--black) 50%, var(--charcoal) 100%);
   background-size: 200% 200%;
-  animation: heroGradient 12s ease infinite;
+  animation: heroGradient 14s ease infinite;
   z-index: -1;
 }
 
@@ -240,8 +260,15 @@ ul {
   50% { background-position: 100% 50%; }
 }
 
+.hero-inner {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .hero-content {
-  max-width: 680px;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .hero-title {
@@ -249,7 +276,7 @@ ul {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 400;
   line-height: 1.15;
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 1.25rem;
 }
 
@@ -260,7 +287,7 @@ ul {
 
 .hero-subtext {
   font-size: 1.15rem;
-  color: var(--gray-dark);
+  color: var(--gray-mid);
   margin-bottom: 2rem;
   line-height: 1.65;
 }
@@ -299,17 +326,23 @@ ul {
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(82, 128, 115, 0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(82, 128, 115, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 var(--primary-glow); }
+  50% { box-shadow: 0 0 0 14px rgba(196, 92, 38, 0); }
 }
 
-/* Hero stats */
+/* Hero stats — bar below hero */
 .hero-stats {
   display: flex;
-  gap: 3rem;
-  margin-top: 4rem;
+  gap: 2.5rem;
+  margin-top: auto;
+  padding: 1.75rem 1.5rem;
+  width: 100%;
+  max-width: 720px;
   flex-wrap: wrap;
   justify-content: center;
+  background: rgba(42, 41, 39, 0.85);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .stat {
@@ -318,21 +351,21 @@ ul {
 
 .stat-number {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 2.25rem;
+  font-size: 2rem;
   color: var(--primary);
   display: inline;
 }
 
 .stat-suffix {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 2.25rem;
+  font-size: 2rem;
   color: var(--primary);
 }
 
 .stat-label {
   display: block;
-  font-size: 0.9rem;
-  color: var(--gray-dark);
+  font-size: 0.85rem;
+  color: var(--gray-mid);
   margin-top: 0.25rem;
 }
 
@@ -340,7 +373,7 @@ ul {
    Services — Cards
    ============================================ */
 .services {
-  background: var(--gray-light);
+  background: var(--white);
 }
 
 .services-grid {
@@ -349,11 +382,71 @@ ul {
   gap: 1.5rem;
 }
 
+.services-grid-three {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* How paid ads help roofing businesses */
+.how-ads-help {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  background: var(--gray-light);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--primary);
+}
+
+.how-ads-help-title {
+  font-size: 1.25rem;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+.how-ads-help-intro {
+  color: var(--gray-dark);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.how-ads-help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.how-ads-help-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--gray-dark);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.how-ads-help-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.how-ads-help-list li:last-child {
+  margin-bottom: 0;
+}
+
 .card {
-  background: var(--white);
+  background: var(--off-white);
   padding: 2rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
+  border-top: 3px solid var(--primary);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
@@ -424,6 +517,7 @@ ul {
   background: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
+  border-top: 3px solid var(--primary);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
@@ -475,9 +569,10 @@ ul {
 }
 
 .testimonial {
-  background: var(--gray-light);
+  background: var(--white);
   padding: 2rem;
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
   border-left: 4px solid var(--primary);
   transition: transform var(--transition), box-shadow var(--transition);
 }
@@ -558,7 +653,7 @@ ul {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(82, 128, 115, 0.15);
+  box-shadow: 0 0 0 3px var(--primary-glow);
 }
 
 .form-group input::placeholder,
@@ -576,7 +671,7 @@ ul {
    Footer
    ============================================ */
 .footer {
-  background: var(--black);
+  background: var(--charcoal);
   color: var(--gray-mid);
   padding: 3rem 0 2rem;
 }
@@ -698,7 +793,7 @@ ul {
     width: 280px;
     max-width: 85vw;
     height: 100vh;
-    background: var(--white);
+    background: var(--off-white);
     padding: calc(var(--header-height) + 2rem) 2rem 2rem;
     transform: translateX(100%);
     transition: transform var(--transition);
@@ -734,6 +829,7 @@ ul {
 
   .hero-stats {
     gap: 2rem;
+    padding: 1.25rem 1rem;
   }
 
   .stat-number,
